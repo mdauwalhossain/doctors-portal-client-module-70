@@ -4,23 +4,21 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import StaticDatePicker from '@mui/lab/StaticDatePicker';
 
-const Calender = () => {
+const Calender = ({date, setDate}) => {
 
-    const [value, setValue] = React.useState(new Date());
+    // const [value, setValue] = React.useState(new Date());
 
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <StaticDatePicker
-          orientation="landscape"
-          openTo="day"
-          value={value}
-          
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      </LocalizationProvider>
+      <StaticDatePicker
+        displayStaticWrapperAs="desktop"
+        value={date}
+        onChange={(newValue) => {
+          setDate(newValue);
+        }}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </LocalizationProvider>
     );
 };
 

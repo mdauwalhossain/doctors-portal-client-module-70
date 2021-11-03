@@ -4,12 +4,13 @@ import AppoinAvail from '../AppoinAvail/AppoinAvail';
 import AppoinHeader from '../AppoinHeader/AppoinHeader';
 
 const Appoinment = () => {
+    const [date, setDate] = React.useState(new Date());
     return (
         <div>
             <h1>Appoinment Page</h1>
             <Navigation></Navigation>
-            <AppoinHeader></AppoinHeader>
-            <AppoinAvail></AppoinAvail>
+            <AppoinHeader date={date} setDate={setDate}></AppoinHeader>
+            <AppoinAvail date={date}></AppoinAvail>
 
         </div>
     );
