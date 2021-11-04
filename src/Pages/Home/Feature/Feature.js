@@ -16,9 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const Feature = () => {
     return (
         <>
-            <h2>Feature Page</h2>
-
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1 }} mt={6}>
                 <Grid container spacing={2} columns={16}>
                     <Grid item xs={8}>
                     <Item><img src="https://st3.depositphotos.com/4732855/i/600/depositphotos_191854690-stock-photo-blonde-doctor-nurse-with-stethoscope.jpg" alt="" /></Item>
