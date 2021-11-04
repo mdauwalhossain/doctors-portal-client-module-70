@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import BookingModal from '../BookingModal/BookingModal'
 
-const Booking = ({booking}) => {
+const Booking = ({booking, date}) => {
  const {name, time, space} = booking;
  const [openBooking, setOpen] = React.useState(false);
     const handleBookingOpen = () => setOpen(true);
@@ -29,6 +29,7 @@ const Booking = ({booking}) => {
         </Grid>
            
         <BookingModal
+        date = {date}
         handleBookingClose={handleBookingClose}
         openBooking={openBooking}
         booking={booking}
