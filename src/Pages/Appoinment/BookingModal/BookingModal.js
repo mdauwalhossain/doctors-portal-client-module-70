@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import useAuth from '../../../hooks/useAuth';
 
 const style = {
   position: 'absolute',
@@ -21,6 +22,13 @@ const style = {
 
 const BookingModal = ({openBooking, handleBookingClose, booking, date}) => {
     const {name, time} = booking;
+    const {user} = useAuth();
+
+    const [bookingInfo, setBookingInfo] = useState({});
+
+    const handleOnBlur = e => {
+      
+    }
 
     const handleBookingSubmit = e => {
       alert ("Submited")
@@ -58,19 +66,25 @@ const BookingModal = ({openBooking, handleBookingClose, booking, date}) => {
             <TextField
               sx={ {width: '90%' , m: 1}}              
               id="outlined-size-small"
-              defaultValue="Your Name"
+              name="patientName"
+              onBlur={handleOnBlur}
+              defaultValue={user.displayName}
               size="small"
             />
             <TextField
               sx={ {width: '90%' , m: 1}}              
               id="outlined-size-small"
+              name="phone"
+              onBlur={handleOnBlur}
               defaultValue="Phone Number"
               size="small"
             />
             <TextField
               sx={ {width: '90%' , m: 1}}              
               id="outlined-size-small"
-              defaultValue="Email"
+              name="email"
+              onBlur={handleOnBlur}
+              defaultValue={user.email}
               size="small"
             />
             <TextField
