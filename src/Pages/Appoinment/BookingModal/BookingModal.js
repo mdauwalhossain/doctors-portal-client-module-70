@@ -23,15 +23,30 @@ const style = {
 const BookingModal = ({openBooking, handleBookingClose, booking, date}) => {
     const {name, time} = booking;
     const {user} = useAuth();
-
-    const [bookingInfo, setBookingInfo] = useState({});
+    const initialInfo = {patientName: user.displayName, email: user.email, phone: ''}
+    const [bookingInfo, setBookingInfo] = useState(initialInfo);
 
     const handleOnBlur = e => {
-      
+      const field = e.target.name;
+      const value = e.target.value;
+      const newInfo = {...bookingInfo};
+      newInfo[field] = value;
+      // console.log(newInfo)
+      setBookingInfo(newInfo);
     }
 
     const handleBookingSubmit = e => {
-      alert ("Submited")
+       alert ("Submited")
+      // collect data
+      const appoinment = {
+        ...bookingInfo,
+        time,
+        serviceName: name,
+        date: date.toLocaleDateString()
+      }
+      // send to the server
+      console.log(appoinment);
+
       e.preventDefault();
       handleBookingClose();
     }
