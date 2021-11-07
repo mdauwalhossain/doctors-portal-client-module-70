@@ -15,6 +15,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { Grid } from '@mui/material';
+import Calender from '../../Shared/Calender/Calender'
+import Appointments from '../Appointments/Appointments';
 
 const drawerWidth = 240;
 
@@ -32,17 +35,6 @@ function Dashboard(props) {
       <Divider />
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -119,7 +111,14 @@ function Dashboard(props) {
       >
         <Toolbar />
         <Typography paragraph>
-         Content here
+        <Grid container spacing={2}>
+            <Grid item xs={12} sm={5}>
+                <Calender></Calender>
+            </Grid>
+            <Grid item xs={12} sm={7}>
+               <Appointments></Appointments>
+            </Grid>
+        </Grid>
         </Typography>
       </Box>
     </Box>
